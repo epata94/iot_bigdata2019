@@ -1,0 +1,20 @@
+﻿*** Review 케이스 취소(abandon)
+
+1. Review 케이스 생성 및 Push
+$ git add *
+$ git commit -m "review by ..."
+$ git push origin HEAD:refs/for/master
+
+2. Review Abandon
+Gerrit 콘솔에서 Review 케이스 열어 Abandon 클릭
+
+3. 로컬에서 변경 내용 취소하기
+
+$ git status
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#   (use "git push" to publish your local commits)
+$ git log				(로컬 Repo의 Commit History 확인)
+$ git reset --hard HEAD^		(로컬 Repo의 마지막 Commit을 하나 취소)
+$ git status				(서버와 동기화 상태 확인)
+

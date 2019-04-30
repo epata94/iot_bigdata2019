@@ -1,0 +1,13 @@
+*** 인라인 소스코드 편집
+
+1. Review 작성
+  git push origin HEAD:refs/for/master
+2. Edit 버튼
+3. 파일 클릭
+4. Inline 소스 편집
+5. Save 및 Close 버튼 클릭
+6. Publish Edit
+7. 오른쪽 상단의 Patch Sets 변경 확인
+8. Submit (및 Merge)
+
+9. git pull ===> 충돌 발생

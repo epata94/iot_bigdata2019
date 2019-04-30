@@ -1,0 +1,20 @@
+﻿*** Gerrit 테스트 준비
+
+1. 각자 프로젝트 생성
+
+Gerrit 로그인
+Projects ==> Create New Project
+Project Name: dev001proj ~ dev025proj (각자 PC 번호)
+Rights Inherit From: All Projects
+Create initial emtpy commit 체크
+Create Project
+
+2. 프로젝트 clone (Clone with commit-msg hook)
+
+Projects ==> General ==> ssh + Clone with commit-msg hook URL 복사 (각자 ID, 프로젝트 명 잘 확인!!!!)
+
+Git Bash 가서
+$ cd ~/git
+$ git clone ssh://dev001@HRDC504-00:29418/dev001proj && scp -p -P 29418 dev001@HRDC504-00:hooks/commit-msg dev001proj/.git/hooks/               (계정 명 dev001을 각자 맞는지 확인 후)
+$ cd dev001proj
+

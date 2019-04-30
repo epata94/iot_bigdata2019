@@ -1,0 +1,156 @@
+cd /c/Git_Local_Repository
+
+<프로젝트 카피(백업)>
+$ ls
+dev001/       dev002_it_train/  dev003_it_train/
+dev002_home/  dev003_home/
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository
+$ cp -R dev003_home dev003_home_copy
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository
+$ ls
+dev001/       dev002_it_train/  dev003_home_copy/
+dev002_home/  dev003_home/      dev003_it_train/
+
+cd dev003_home_copy
+$ vi hello_wold.c
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home_copy (master)
+$ cat hello_wold.c
+#include <stdio.h>
+
+void main(){
+        /* 서버 버전과 통합 2019-04-30 11:45*/
+        printf("Hello! world and Hyunkoo!\n");
+        printf("Program End");
+}
+
+git log -p -2
+<= 서버와 현재 로컬 레파지토리와 형상이 일치하는지 확인할 떄 사용
+
+$ git push origin master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 305 bytes | 305.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1)
+remote: Processing changes: refs: 1, done
+To ssh://USER9-PC:29418/dev003
+   5dce526..585abfb  master -> master
+
+git checkout 5dce52660d9525d85b531eb75862c4a1a50a7b0d
+git checkout master
+
+
+$ git add hello_wold.c
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home_copy (master)
+$ git commit -m "Add comment"
+[master cbb5c8a] Add comment
+ 1 file changed, 8 insertions(+)
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home_copy (master)
+$ cat hello_wold.c
+/*********************************
+ * hello_world.c
+ *      developed by Hyunkoo Lee
+ * Main Function
+ * - test printf
+ * - test git client/server
+ *********************************/
+
+#include <stdio.h>
+
+void main(){
+        /* 서버 버전과 통합 2019-04-30 11:45*/
+        printf("Hello! world and Hyunkoo!\n");
+        printf("Program End");
+}
+
+$ vi hello_wold.c
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home_copy (master)
+$ git add hello_wold.c
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home_copy (master)
+$ git commit -m "Change main function style"
+[master 9249696] Change main function style
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home_copy (master)
+$ cat hello_wold.c
+/*********************************
+ * hello_world.c
+ *      developed by Hyunkoo Lee
+ * Main Function
+ * - test printf
+ * - test git client/server
+ *********************************/
+
+#include <stdio.h>
+
+int main(){
+        /* 서버 버전과 통합 2019-04-30 11:45*/
+        printf("Hello! world and Hyunkoo!\n");
+        printf("Program End");
+
+        return 0;
+}
+
+$ git checkout 1st_week
+Note: checking out '1st_week'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at 585abfb Add end message
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home_copy ((1st_week))
+$ cat hello_wold.c
+#include <stdio.h>
+
+void main(){
+        /* 서버 버전과 통합 2019-04-30 11:45*/
+        printf("Hello! world and Hyunkoo!\n");
+        printf("Program End");
+}
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home_copy ((1st_week))
+$ git checkout finish
+Previous HEAD position was 585abfb Add end message
+HEAD is now at cbb5c8a Add comment
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home_copy ((finish))
+$ cat hello_wold.c
+/*********************************
+ * hello_world.c
+ *      developed by Hyunkoo Lee
+ * Main Function
+ * - test printf
+ * - test git client/server
+ *********************************/
+
+#include <stdio.h>
+
+void main(){
+        /* 서버 버전과 통합 2019-04-30 11:45*/
+        printf("Hello! world and Hyunkoo!\n");
+        printf("Program End");
+}
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home_copy ((finish))
+$ git checkout master
+Previous HEAD position was cbb5c8a Add comment
+Switched to branch 'master'
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+

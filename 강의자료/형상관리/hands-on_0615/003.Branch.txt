@@ -1,0 +1,60 @@
+﻿﻿*** Branch 테스트 
+
+$ git fetch			(서버에 변경 사항이 있는지 확인)
+$ git pull			(변경 사항이 있으면 가져옴)
+
+1. branch 생성
+$ cd ~/git/dev0NNproj
+$ git checkout -b branch1	(브랜치 생성)
+$ git branch			(브랜치 목록 보기)
+$ vi branch1.txt		(파일 추가)
+$ git status			(상태 보기)
+
+2. branch 이동
+$ git checkout master		(브랜치 간 이동)
+$ git status
+$ git branch			(브랜치 목록 보기)
+
+3. branch 병합 (fast-forward)
+$ git checkout branch1		(branch1으로 다시 이동)
+$ git add branch1.txt		(Commit 대상으로 추가)
+$ git commit -m "branch1"	(커밋)
+
+  (Fast-Forward가 아닌 Merge 테스트 하려면)
+  $ git checkout master
+  $ vi master1.txt
+  $ git add master1.txt
+  $ commit -m "master"
+
+$ git checkout master 		(master 브랜치로 이동 - 병합을 위해)
+$ git merge branch1 		(현재 master 브랜치에서 branch1 브랜치 병합)
+$ git push origin master	(서버 Repo로 Push - 로컬의 master를 서버의 master로)
+
+4. Local Repo 2에 가서 Pull - 다른 개발자가 변경 내용을 가져온다고 가정
+$ cd ~/git/dev0NNproj2		(다른 개발자의 로컬 Repo로 이동)
+$ git fetch			(서버의 변경 사항 확인)
+$ git pull			(변경 사항 가져 오기)
+$ git branch			(로컬 Repo 1과 로컬 Repo 2의 브랜치 목록이 다름)
+
+==> 로컬 Repo의 브랜치는 서버 또는 다른 개발자의 로컬 Repo와 서버 다를 수 있음
+==> 로컬의 브랜치를 서버로 동기화 할지 여부는 선택적
+
+* 참고 명령
+
+git branch			(로컬 브랜치 조회)
+git branch -r			(원격서버 브랜치 조회)
+git branch -a			(로컬/원격서버 모두 조회)
+
+* 참고: 서버로 branch push/pull
+
+서버로 로컬에 생성한 branch를 올리고 싶다면
+
+$ cd ~/git/dev0NNproj
+$ git checkout branch1
+$ git push origin branch1
+
+서버의 branch를 내려 받고 싶다면
+$ git ~/git/dev0NNproj2
+$ git pull 
+$ git checkout branch1
+

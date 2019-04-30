@@ -1,0 +1,200 @@
+- Git Server 구동
+- Git Server Web 접속
+- Admin 로그인
+- 'dev003' 이름으로 프로젝트 생성
+
+Git Bash Shell
+cd /c/Git_Local_Repository
+
+<학원 컴퓨터>
+$ git clone ssh://admin@USER9-PC:29418/dev003 dev003_it_train
+Cloning into 'dev003_it_train'...
+remote: Counting objects: 2, done
+remote: Finding sources: 100% (2/2)
+Receiving objects: 100% (2/2), done.
+remote: Total 2 (delta 0), reused 0 (delta 0)
+
+$ cd dev003_it_train/
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_it_train (master)
+$ ls
+
+$ git add hello_wold.c
+warning: LF will be replaced by CRLF in hello_wold.c.
+The file will have its original line endings in your working directory
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_it_train (master)
+$ git commit -m "hello_world.c is created"
+[master 4192305] hello_world.c is created
+ 1 file changed, 5 insertions(+)
+ create mode 100644 hello_wold.c
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_it_train (master)
+$ git push origin master
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 311 bytes | 311.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+remote: Processing changes: refs: 1, done
+To ssh://USER9-PC:29418/dev003
+   718eeab..4192305  master -> master
+
+<집 컴퓨터>
+USER@USER9-PC MINGW64 ~
+$ cd /c/Git_Local_Repository/
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository
+$ ls
+dev001/       dev002_it_train/
+dev002_home/  dev003_it_train/
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository
+$ git clone ssh://admin@USER9-PC:29418/dev003 dev003_home
+Cloning into 'dev003_home'...
+remote: Counting objects: 5, done
+remote: Finding sources: 100% (5/5)
+remote: Total 5 (delta 0), reused 3 (delta 0)
+Receiving objects: 100% (5/5), done.
+
+$ cd dev003_home/
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home (master)
+$ ls
+hello_wold.c
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home (master)
+$ cat hello_wold.c
+#include <stdio.h>
+
+void main(){
+        printf("Hello!");
+}
+
+<학원 컴퓨터>
+$ vi hello_wold.c
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_it_train (master)
+$ cat hello_wold.c
+#include <stdio.h>
+
+void main(){
+        printf("Hello! World!");
+}
+
+$ git add hello_wold.c
+warning: LF will be replaced by CRLF in hello_wold.c.
+The file will have its original line endings in your working directory
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_it_train (master)
+$ git commit -m "Add greeting message, world"
+[master 7c16247] Add greeting message, world
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_it_train (master)
+$ git push origin master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 322 bytes | 322.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+remote: Processing changes: refs: 1, done
+To ssh://USER9-PC:29418/dev003
+   4192305..7c16247  master -> master
+
+<집 컴퓨터>
+$ vi hello_wold.c
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home (master)
+$ cat hello_wold.c
+#include <stdio.h>
+
+void main(){
+        printf("Hello! Hyunkoo");
+}
+
+$ git add hello_wold.c
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home (master)
+$ git commit -m "add greeting message from home"[master ed4ea1e] add greeting message from home
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home (master)
+$ git push origin master
+To ssh://USER9-PC:29418/dev003
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'ssh://admin@USER9-PC:29418/dev003'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home (master)
+$ git pull
+remote: Counting objects: 5, done
+remote: Finding sources: 100% (3/3)
+remote: Total 3 (delta 0), reused 3 (delta 0)
+Unpacking objects: 100% (3/3), done.
+From ssh://USER9-PC:29418/dev003
+   4192305..7c16247  master     -> origin/master
+Auto-merging hello_wold.c
+CONFLICT (content): Merge conflict in hello_wold.c
+Automatic merge failed; fix conflicts and then commit the result.
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home (master|MERGING)
+$ vi hello_wold.c
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home (master|MERGING)
+$ git add hello_wold.c
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home (master|MERGING)
+$ git commit -m "서버 버전과 인사말 충돌 해결"    [master 5dce526] 쩌짯쨔철쩔쨔철▒체째첬 ▒貫潁▒ 횄役▒ 횉莫찼
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home (master)
+$ git push origin master
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 728 bytes | 728.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0)
+remote: Processing changes: refs: 1, done
+To ssh://USER9-PC:29418/dev003
+   7c16247..5dce526  master -> master
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home (master)
+$ cat hello_wold.c
+#include <stdio.h>
+
+void main(){
+        /* 서버 버전과 통합 2019-04-30 11:45*/
+        printf("Hello! world and Hyunkoo!");
+}
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_home (master)
+$
+
+<학원 컴퓨터>
+$ git pull
+remote: Counting objects: 10, done
+remote: Finding sources: 100% (6/6)
+remote: Total 6 (delta 0), reused 6 (delta 0)
+Unpacking objects: 100% (6/6), done.
+From ssh://USER9-PC:29418/dev003
+   7c16247..5dce526  master     -> origin/master
+Updating 7c16247..5dce526
+Fast-forward
+ hello_wold.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev003_it_train (master)
+$ cat hello_wold.c
+#include <stdio.h>
+
+void main(){
+        /* 서버 버전과 통합 2019-04-30 11:45*/
+        printf("Hello! world and Hyunkoo!");
+}

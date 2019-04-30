@@ -1,0 +1,36 @@
+07. Rework
+
+1. Review 생성
+
+$ vi rework.txt
+$ git add rework.txt
+$ git commit -m "rework"
+$ git push origin HEAD:refs/for/master
+
+2. 평가 -2 부여
+
+3. 로컬 Repo에서
+
+$ vi rework.txt			재작업
+$ git commit -a --amend		"rework 2"라 메시지 입력
+$ git push origin HEAD:refs/for/master
+
+4. Gerrit에서 Inline Edit로 소스 편집해서 새로운 PatchSet 생성
+
+5. 새로운 PatchSet 소스 다운로드
+
+- Review 케이스의 오른쪽 상단 Download에서 Checkout 선택
+- 대략 아래와 같은 형식
+
+git fetch ssh://admin@HRDC504-00:29418/handson refs/changes/24/124/1 && git checkout FETCH_HEAD
+
+6. 소스 수정 및 다시 Review 제출 (서버에 또 다른 PatchSet 생성)
+
+$ git branch		(임시 브랜치 확인... Detached...)
+$ vi rework.txt
+$ git commit -a --amend
+$ git push origin HEAD:refs/for/master
+
+7. 평가 +2 부여
+
+8. Submit

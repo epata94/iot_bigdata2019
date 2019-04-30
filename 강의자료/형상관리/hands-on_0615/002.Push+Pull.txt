@@ -1,0 +1,28 @@
+*** Push and Pull
+
+1. 두 번째 Local Repo clone (공동 작업을 테스트 하려고)
+$ cd ~/git
+$ git clone ssh://dev0NN@HRDC504-00:29418/dev0NNproj dev0NNproj2	(다른 디렉토리로 clone)
+==> 동일한 원격서버 프로젝트(Repository)를 로컬 PC의 다른 디렉토리로 복제하는 것임
+==> 주의!!!! 서버에 프로젝트(Repository)를 다시 생성하면 안됨
+$ git remote -v		(연결된 서버 Repo 확인)
+
+2. 두 번째 Local Repo에서 새로운 파일 추가
+$ cd dev0NNproj2
+$ vi test2.txt
+$ git add test2.txt
+$ git commit -m "2nd developer"
+
+3. 두 번쨰 Local Repo에서 서버로 Push
+$ git status
+$ git push origin master
+$ git status
+
+4. 첫 번째 Local Repo에서 Pull
+$ cd ~/git/dev0NNproj
+$ git remote -v		(연결된 서버 Repo 확인 - 두 개의 프로젝트가 동일)
+$ git fetch
+$ git status
+$ git pull
+
+

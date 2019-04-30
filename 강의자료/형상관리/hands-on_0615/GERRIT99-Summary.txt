@@ -1,0 +1,50 @@
+*** Summary
+
+Git에 대한 이해 수준 향상이 목표
+
+1. Git의 특징
+
+- Repository 작업을 로컬에서 가능 (서버와 동일한 Repository Clone을 가지고 작업할 수 있음)
+- 정제가 완료된 "아름다운" 소스와 History/Branch를 서버로 올릴 수 있음
+- 개인 작업자들에게 "권한"과 "의무"가 동시에 부여 됨
+- 서버 상에서만 하던 Cherry-Pick 기능을 로컬 PC에서 가능 (History가 그대로 서버에 저장)
+
+- 공통 조상을 가진 Branch를 만들어 관리 가능
+- 공통 Commit을 수정 가능???
+
+You can use git rebase, for example, if you want to modify back to commit bbc643cd, run
+
+$ git rebase --interactive 'bbc643cd^'
+In the default editor, modify pick to edit in the line whose commit you want to modify. Make your changes and then commit them with the same message you had before:
+
+$ git commit --all --amend --no-edit
+to modify the commit, and after that
+
+$ git rebase --continue
+to return back to the previous head commit.
+
+WARNING: Note that this will change the SHA-1 of that commit as well as all children -- in other words, this rewrites the history from that point forward. You can break repos doing this if you push using the command git push --force
+
+-----------
+
+git rebase -i HEAD^^^
+Now mark the ones you want to amend with edit or e (replace pick). Now save and exit.
+
+Now make your changes, then
+
+git add -A
+git commit --amend --no-edit
+git rebase --continue
+If you want to add an extra delete remove the options from the commit command. If you want to adjust the message, omit just the --no-edit option.
+
+2. Gerrit의 특징
+
+- Git 기반으로 코드리뷰와 권한관리 제공
+- Git 명령을 많이 알아야 함
+- 서버 상에서 Merge/Rebase/Cherry-Pick을 제공
+
+
+
+
+
+

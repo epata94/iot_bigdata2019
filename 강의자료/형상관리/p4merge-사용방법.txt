@@ -1,0 +1,15 @@
+* P4Merge 설치 후, 아래와 같이 shell 생성
+HRDC501-00@HRDC501-00 MINGW64 ~/git
+$ cat p4merge.sh
+"C:/Program Files/Perforce/p4merge" $*
+
+* .gitconfig에 아래와 같이 설정
+$ cat ~/.gitconfig
+[merge]
+        tool = p4
+[mergetool "p4"]
+        cmd = /c/Users/SEC/git/p4merge.sh "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+        trustExitCode = false
+
+* conflict 상황에서 아래 명령 실행 
+git mergetool

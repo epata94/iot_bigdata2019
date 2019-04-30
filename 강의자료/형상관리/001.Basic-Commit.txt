@@ -1,0 +1,39 @@
+﻿*** 기본 에디터 변경
+
+git config --global core.editor notepad
+notepad <파일명> 편집 후 저장
+
+http://hrdc504-00:8080
+
+* 기본 파일 추가 및 커밋
+
+$ cd /c/Git_Local_Repository/
+$ cd dev001/
+
+USER@USER9-PC MINGW64 /c/Git_Local_Repository/dev001 (master)
+$ pwd
+/c/Git_Local_Repository/dev001
+
+$ vi(또는 notepad) test1.txt         (파일 생성)
+$ :w 로 파일 저장
+$ git status            (파일 변경 메시지 확인)
+$ git add test1.txt             (Commit 대상으로 추가)
+$ git status
+$ git commit            (커밋 및 커밋메시지 추가)
+  또는 git commit -m "메시지"
+  또는 git commit -a -m "메시지" (git add와 commit을 한꺼번에)
+$ git status            (커밋 후 상태 변화 확인)
+$ git log
+$ gitk --all&
+
+* 서버로 Push
+
+$ git push origin master        (로컬 Repo의 내용을 서버 Repo로 전송)
+
+* 파일 변경 후 Commit + Push는 각자 테스트
+
+* 참고
+
+$ git remote -v
+$ git branch
+

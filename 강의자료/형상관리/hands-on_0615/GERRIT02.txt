@@ -1,0 +1,15 @@
+﻿2. 리뷰 Push
+
+git push origin HEAD:refs/for/master
+==> 뒤에 붙는 Reference 이름에 주의
+
+
+Review 작업
+Verify 권한 부여
+Review Submit
+
+로컬 Repository로 Review 결과 Pull 하기
+
+$ git fetch
+$ git pull
+

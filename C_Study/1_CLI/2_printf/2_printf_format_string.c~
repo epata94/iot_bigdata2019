@@ -1,0 +1,6 @@
+#include <stdio.h>
+
+void main(){
+	printf("나는 사과를 10개 먹었다.\n");
+	printf("나는 사과를 %d개 먹었다.", 10);
+}

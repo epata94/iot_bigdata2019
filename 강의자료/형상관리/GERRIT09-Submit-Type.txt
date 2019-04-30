@@ -1,0 +1,43 @@
+﻿*** 변경 제출(submit) 및 병합(merge)
+
+1. 로컬 PC에 Repository 두 개 생성 (이미 존재한다면 그것 사용)
+
+$ cd ~/git
+$ cp -R dev0NNproj/ dev0NNproj2              (Local Repo를 두 개 생성)
+
+2. 첫 번째 Repository에서 Review 제출
+
+$ cd ~/git/dev0NNproj
+$ git fetch
+$ git pull
+$ vi a1.txt
+$ git add a1.txt
+$ git commit
+$ git push origin HEAD:refs/for/master        (Review 체출)
+
+3. 두 번째 Repository에서 Review 제출
+
+$ cd ~/git/dev0NNproj2
+$ git fetch
+$ git pull
+$ vi a2.txt
+$ git add a2.txt
+$ git commit
+$ git push origin HEAD:refs/for/master       (Review 제출)
+
+4. Submit Type 변경 (Fast-Forward)
+
+- Project의 Submit Type 변경 테스트
+- Gerrit의 Project ==> General에 가서 Submit Type을 Fast Forward Only로 변경
+
+a2가 먼저 submit이 된 경우
+a1은 merge 불가 (fast forward가 아니므로)
+Rebase 후에 submit 해야 함
+
+5. Submit Type 변경 (Merge 또는 Rebase)
+
+- Project의 Submit Type 변경 테스트
+- Gerrit의 Project ==> General에 가서 Submit Type을 Merge If Necessary  또는 Rebase If Necessary로 변경
+- Submit이 가능해짐
+
+

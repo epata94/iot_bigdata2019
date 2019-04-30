@@ -1,0 +1,36 @@
+Conflict/Merge
+
+0. 리셋
+$ cd ~/git/dev0NNproj		(Local Repo 1)
+$ git checkout master
+$ git pull
+
+1. 새로운 branch2에서 파일 변경 및 커밋
+$ vi samefile.txt		(파일 생성)
+$ git add samefile.txt
+$ git checkout -b branch2	(branch2 생성)
+$ git commit -m "branch2 samefile"	(브랜치 커밋)
+
+2. master에서 파일 변경 및 커밋
+$ git checkout master
+$ vi samefile.txt		(동일한 파일 생성 - 다른 내용)
+$ git add samefile.txt
+$ git commit -m "master samefile"
+
+3. master에서 merge 시도 및 conflict
+$ git branch -d branch2		(branch2 삭제 시도 및 실패)
+$ git merge branch2
+$ git status
+$ vi samefile.txt		(충돌 내용 해결)
+$ git add samefile.txt
+$ git commit -m "Conflict Resolution"
+$ git branch -d branch2		(branch2 삭제 시도 및 성공)
+
+4. 서버로 Push / 로컬 Repo 2에서 확인
+$ git push origin master	(서버로 Push)
+$ cd ~/git/dev0NNproj2		(로컬 Repo 2로 가서)
+$ git fetch			(서버에서 변경 가져오기)
+	==> git checkout FETCH_HEAD	(fetch된 내용을 보고 싶으면)
+        ==> git checkout master		(fetch된 내용 보기 취소)
+$ git pull			(변경 적용)
+

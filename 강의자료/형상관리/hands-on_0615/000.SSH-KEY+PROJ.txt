@@ -1,0 +1,88 @@
+﻿"\\hrdc501-00\Users\SEC\Downloads\git강의" 에도 공유 
+(hrdc501-00 / selc8031!)
+Git-2.13.0-64-bit.exe 설치(디폴트)
+
+**** 기본 설정
+
+* SSH 키 등록
+
+Git Bash 실행		(윈도우 ==> 시작 메뉴 ==> Git Bash)
+ssh-keygen -t rsa		(이미 존재하면 Overwrite 및 디폴트로 생성)
+cat ~/.ssh/id_rsa.pub	(Public Key 내용 복사)
+http://hrdc501-00:8080	(Git 서버 콘솔 - Gerrit 접속 / IE 안되면 Chrome으로)
+dev0NN~dev0NN 계정으로 로그인	(오른쪽 상단 Become 또는 Switch User)
+			(0NN은 각자 PC 번호)
+오른쪽 상단 계정 ==> Settings ==> SSH Public Keys ==> Add Key로 추가/붙여 넣기 ==> Add 버튼
+
+* SSH Key 정상 등록 확인
+
+Git Bash 실행		(윈도우 ==> 시작 메뉴 ==> Git Bash)
+$ ssh -p 29418 dev0NN@hrdc501-00	(welcome 메시지 나오면 성공... 00은 강사 PC)
+
+* 각자 계정 확인
+$ git config --global user.name "dev0NN"
+$ git config --global user.email "dev0NN@test.com"
+$ git config --list | grep user.name	(dev001 ~ dev024인지 확인. 각자 PC번호)
+
+* 프로젝트 생성
+
+Git 서버/Gerrit 로그인		(http://hrdc501-00:8080)
+왼쪽 상단 메뉴 Projects ==> Create New Project
+Project Name: dev001proj ~ dev024proj	(각자 PC 번호)
+Rights Inherit From: All Projects		(프로젝트 권한 상속)
+Create initial emtpy commit 체크		(반드시 체크)
+Create Project 버튼		(프로젝트 최종 생성)
+
+* 서버로부터 로컬 Repo로 프로젝트 clone
+
+메뉴 Projects ==> General로 들어가서		(또는 Project List에서 선택 후)
+"ssh + Clone" URL 복사		(각자 ID, 프로젝트 명 잘 확인!!!!)
+
+Git Bash 가서
+$ cd ~/git
+$ git clone ssh://dev0NN@HRDC501-00:29418/dev001proj		(계정 명 dev001을 각자 맞게 변경)
+$ cd dev0NNproj
+$ git status
+$ git log
+$ gitk --all		(백그라운드로 띄우려면 gitk --all &)
+
+* Git 명령집(참고)
+
+gitk --all					History 그래프 보기 GUI (Git Bash 에서만 동작)
+git log						Commit Log 보기
+git log --all				모든 브랜치 log 보기
+git log [branch name]		브랜치의 log 보기
+git config --global user.name [user name] 	작업자 이름 설정
+git config --global user.email [user email] 	작업자 이메일 설정
+git config --global --list 			설정값(이름 및 메일등 ) 확인
+git init 			git 저장소(repo) 만들기
+git remote add [remote name] [remote addres] 	별명으로 원격지주소를 저장
+git remote rm [remote name] 			별명의 원격지를 삭제
+git remote rename [remote name] [new name] 	별명을 새로운 별명으로 변경
+git fetch [remote name] 			remoet의 모든 정보를 가져옴(모든 branch) ==> 서버에 생긴 변경 내용 확인(변경 내용 적용은 pull을 해야 함)
+git pull 		저장소에서 변경 내용 가져오기(merge까지 수행)
+git push 		commit들을 master 저장소에 저장
+git push [remote name] [localbranch name] 	local branch의 내용을 업데이트
+git push [server] tag [TAG] 			server에 tag 전송
+git push [server] --tags 			변경된 모든 tag 전송
+git push [server] [L.B]:[R:B] 		server 에 local branch 를 -Remote branch이름으로저장
+git tag [TAG NAME] 			저장소에 태그를 붙인다.
+git tag 			태그목록을 본다.
+git branch [branch name] 	저장소의 branch name으로 branch를 만든다.
+git branch branch		 목록을 본다.
+git branch -a 			현재 생성된 모든 local branch와
+git branch -v 			reomte branch 확인
+git checkout [branch name] 	다른 브랜치로 전환
+git checkout -b [branch name] 	branch 생성
+git checkout [file or folder] 	git repo 기준 마지막 commit 상태로 돌림
+git checkout [id] [file or folder] 	git repo 기준 id에 해당하는 commit 상태로 돌림
+git checkout -f 		아직 commit 되지 않은 working tree와 -index 수정사항 모두 사라짐
+git merge [branch name] 	branch의 내용을 가져와 합침
+git add [file or folder] 	git에 file 또는 folder 추가
+git add * 			git에 모든 file 또는 folder 추가
+git rm [file or folder] 	git 파일 또는 폴더 제거
+git status 			현재 git 상태 보기
+git commit -m [message] 	message를 repo에 저장
+git diff 			local과 remote의 차이점을 보여줌
+git remote 			remote서버 확인
+

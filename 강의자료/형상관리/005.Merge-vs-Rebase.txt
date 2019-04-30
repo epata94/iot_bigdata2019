@@ -1,0 +1,136 @@
+[Branch Merge 와 Rebase의 차이 비교 진행 방법]
+
+*** 진행 개요
+- Master에서 Branch 3개를 각각 생성(chg1~3)한 다음 
+- Master에서 파일을 변경하고, chg1부터 3까지 각각의 Branch에 고유 파일 생성 및 등록을 통해 변경 진행
+- 단, 파일 변경 시 Branch 명과 동일 또는 유사하게 생성하고
+- Commit 메시지를 "변경순서, 현재 브랜치명" 으로 입력하여 Rebase 및 Merge의 차이점을 확인 할 수 있도록 구성
+- Rebase 또는 Merge를 진행 전 해당 폴더 자체를 복제하여 Merge 먼저,
+- 그 다음 Rebase를 진행 한 후, 각각의 폴더에서 Git log 및 Gitk 명령을 통해 GUI 상태에서 변경 내역을 확인
+- 이 내용은 로컬에서만 진행하여 그 변화를 보다 쉽게 확인 할 수 있도록 진행
+
+*** 진행 순서
+
+0. 로컬 Repo Reset
+
+$ cd ~/git/dev0NNproj		(Local Repo 1)
+$ git checkout master
+$ git pull
+
+1. 공통 mst1.txt 생성
+
+$ vi ms1.txt			(mst1.txt 파일 생성 및 저장)
+$ git add *
+$ git commit -m "init"		(앞으로 만들어질 branch의 parent)
+
+2. 브랜치 3개 생성
+
+$ git branch chg1
+$ git branch chg2
+$ git branch chg3
+
+3. Master 브랜치 변경
+
+$ vi ms2.txt			(mst2.txt 파일 생성 및 저장)
+$ git add *
+$ git commit -m "1st file change at Master"
+
+4. chg1 브랜치 변경
+
+$ git checkout chg1
+$ vi chg1.txt			(chg1.txt 파일 생성 및 저장)
+$ git add *
+$ git commit -m "2nd file change at chg1"
+$ vi chg1.txt			(chg1.txt 파일 수정 후 저장)
+$ git add *
+$ git commit -m "3rd file change at chg1"
+
+5. chg2 브랜치 변경
+
+$ git checkout chg2
+$ vi chg2.txt			(chg2.txt 파일 생성 및 저장)
+$ git add *
+$ git commit -m "4th file change at chg2"
+$ vi chg2.txt			(chg2.txt 파일 수정 후 저장)
+$ git add *
+$ git commit -m "5th file change at chg2"
+
+6. chg3 브랜치 변경
+
+$ git checkout chg3
+$ vi chg3.txt			(chg3.txt 파일 생성 및 저장)
+$ git add *
+$ git commit -m "6th file change at chg3"
+
+7. Merge와 Rebase 비교를 위해
+작업 폴더(로컬 Repo)를 복제하여 2개의 폴더(로컬 Repo) 생성
+
+$ cd ~/git
+$ cp -R dev0NNproj dev0NNproj3
+
+
+*** Rebase 
+
+복제 된 폴더 중 하나의 폴더에서 Rebase 진행
+진행 중간 중간 git log를 통해 이력의 변화 설명 후
+전체 Rebase가 완료되면 gitk 명령을 활용해 GUI환경에서 확인
+
+0. 첫 번째 Repo에서
+
+$ cd ~/git/dev0NNproj
+
+1. Rebase chg1
+
+$ git checkout chg1
+$ git branch -u master
+$ git rebase master
+$ git log 및 gitk --all 확인 
+$ git checkout master
+$ git merge chg1
+ 
+2. chg2 branch rebase
+
+$ git checkout chg2
+$ git branch -u master
+$ git rebase master
+$ git log 및 gitk --all 확인 
+$ git checkout master
+$ git merge chg2
+
+3. chg3 branch rebase
+
+$ git checkout chg3
+$ git branch -u master
+$ git rebase master
+$ git log 및 gitk --all 확인 
+$ git checkout master
+$ git merge chg3
+
+
+*** Merge
+
+복제 된 폴더 중 하나의 폴더에서 Merge 진행
+진행 중간 중간 git log를 통해 이력의 변화 설명 후
+전체 Merge가 완료되면 gitk 명령을 활용해 GUI환경에서 확인
+
+0. 두 번째 Repo에서
+
+$ cd ~/git/dev0NNproj3
+
+1. chg1 branch Merge
+
+$ git checkout master
+$ git merge chg1
+
+2. chg2 branch Merge
+
+$ git checkout master
+$ git merge chg2
+
+3. chg3 branch Merge
+
+$ git checkout master
+$ git merge chg3
+
+
+

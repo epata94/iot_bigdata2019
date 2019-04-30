@@ -1,0 +1,198 @@
+﻿Git 클라이언트 프로그램 설치
+https://git-scm.com/download/win
+
+jdk 설치
+
+<서버 설정>
+C:\Users 에서 'SEC'폴더 와 'gerrit' 폴더 생성
+C:\Users\SEC\gerrit 폴더에 Git 서버 폴더 카피
+C:\Users\SEC\bin <- 이런 디렉토리 구조가 되어야 함
+
+C:\Users\SEC\etc\gerrit.config 파일 설정
+canonicalWebUrl <- 본인 컴퓨터 이름으로 (도스 command창에서 hostname 으로 검색) 변경
+user <- 본인 컴퓨터 이름으로 변경
+javaHome <- jdk 경로 복사
+ex) C:\Program Files\Java\jdk-12
+
+\를 경로에 하나씩 더 추가 하기
+C:\\Program Files\\Java\\jdk-12
+
+
+* 서버 구동
+도스 command 실행(윈도우+R => cmd)
+cd C:\Users\SEC\gerrit
+run.cmd
+C:\Users\SEC\gerrit>java -jar bin\gerrit.war daemon --console-log
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.google.inject.internal.cglib.core.$Ref
+lectUtils$1 (file:/C:/Users/USER/.gerritcodereview/tmp/gerrit_890327133685481736
+6_app/guice-4.1.0.jar) to method java.lang.ClassLoader.defineClass(java.lang.Str
+ing,byte[],int,int,java.security.ProtectionDomain)
+WARNING: Please consider reporting this to the maintainers of com.google.inject.
+internal.cglib.core.$ReflectUtils$1
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflect
+ive access operations
+WARNING: All illegal access operations will be denied in a future release
+[2019-04-30 09:48:52,131] [main] INFO  com.google.gerrit.server.cache.h2.H2Cache
+Factory : Enabling disk cache C:\Users\SEC\gerrit\cache
+[2019-04-30 09:48:53,459] [main] INFO  com.google.gerrit.server.config.ScheduleC
+onfig : gc schedule parameter "gc.interval" is not configured
+[2019-04-30 09:48:53,459] [main] INFO  com.google.gerrit.server.config.ScheduleC
+onfig : changeCleanup schedule parameter "changeCleanup.interval" is not configu
+red
+[2019-04-30 09:48:54,354] [main] WARN  com.google.gerrit.server.config.GitwebCgi
+Config : gitweb not installed (no \usr\lib\cgi-bin\gitweb.cgi found)
+[2019-04-30 09:48:55,305] [main] INFO  org.eclipse.jetty.util.log : Logging init
+ialized @8979ms
+[2019-04-30 09:48:55,352] [main] WARN  com.google.gerrit.metrics.proc.OperatingS
+ystemMXBeanProvider : No implementation of UnixOperatingSystemMXBean found
+[2019-04-30 09:48:55,383] [main] INFO  com.google.gerrit.server.git.LocalDiskRep
+ositoryManager : Defaulting core.streamFileThreshold to 505m
+[2019-04-30 09:48:55,668] [main] INFO  com.google.gerrit.server.plugins.PluginLo
+ader : Removing stale plugin file: plugin_download-commands_190429_1349_16543621
+561055331051.jar
+[2019-04-30 09:48:55,684] [main] INFO  com.google.gerrit.server.plugins.PluginLo
+ader : Removing stale plugin file: plugin_hooks_190429_1349_379476927084809862.j
+ar
+[2019-04-30 09:48:55,684] [main] INFO  com.google.gerrit.server.plugins.PluginLo
+ader : Removing stale plugin file: plugin_reviewnotes_190429_1349_91200718728490
+16300.jar
+[2019-04-30 09:48:55,684] [main] INFO  com.google.gerrit.server.plugins.PluginLo
+ader : Loading plugins from C:\Users\SEC\gerrit\.\plugins
+[2019-04-30 09:48:55,762] [main] INFO  com.google.gerrit.server.plugins.PluginLo
+ader : Loaded plugin download-commands, version v2.14
+[2019-04-30 09:48:55,824] [main] INFO  com.google.gerrit.server.plugins.PluginLo
+ader : Loaded plugin hooks, version v2.14
+[2019-04-30 09:48:55,871] [main] INFO  com.google.gerrit.server.plugins.PluginLo
+ader : Loaded plugin reviewnotes, version v2.14
+[2019-04-30 09:48:55,871] [main] INFO  com.google.gerrit.server.change.ChangeCle
+anupRunner : Ignoring missing changeCleanup schedule configuration
+[2019-04-30 09:48:55,933] [main] INFO  com.google.gerrit.sshd.SshDaemon : Starte
+d Gerrit SSHD-CORE-1.4.0 on *:29418
+[2019-04-30 09:48:55,933] [main] INFO  org.eclipse.jetty.server.Server : jetty-9
+.3.17.v20170317
+[2019-04-30 09:48:56,668] [main] INFO  org.eclipse.jetty.server.handler.ContextH
+andler : Started o.e.j.s.ServletContextHandler@11fb4f69{/,null,AVAILABLE}
+[2019-04-30 09:48:56,684] [main] INFO  org.eclipse.jetty.server.AbstractConnecto
+r : Started ServerConnector@19544627{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
+[2019-04-30 09:48:56,684] [main] INFO  org.eclipse.jetty.server.Server : Started
+ @10369ms
+[2019-04-30 09:48:56,700] [main] INFO  com.google.gerrit.pgm.Daemon : Gerrit Cod
+e Review 2.14 ready
+
+* SSH 키 등록
+
+Git Bash 실행		(윈도우 ==> 시작 메뉴 ==>Git ==> Git Bash)
+$ pwd
+/c/Users/USER
+
+USER@USER9-PC MINGW64 ~
+$ ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/USER/.ssh/id_rsa):
+Created directory '/c/Users/USER/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/USER/.ssh/id_rsa.
+Your public key has been saved in /c/Users/USER/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:0SoP2FdO+L3iCubc5G2OTzd03jT/1BgFneplWqtuDkg USER@USER9-PC
+The key's randomart image is:
++---[RSA 2048]----+
+|              ...|
+|         o     o.|
+|        o +   . .|
+|     o   B . . = |
+|    . + SEo + B.o|
+|       =. .. * *+|
+|      o o.o.+ + =|
+|     + = =.o.+ ..|
+|      o === +o  .|
++----[SHA256]-----+
+
+USER@USER9-PC MINGW64 ~
+
+ssh-keygen -t rsa		(이미 존재하면 Overwrite 및 디폴트로 생성)
+.ssh/id_rsa.pub	(Public Key 내용 복사)
+C:\Users\USER\.ssh\id_rsa.pub
+
+<GIT 서버 화면>
+- 크롬 브라우저 실행
+- http://user9-pc:8080 접속
+**** 기본 설정
+오른쪽 상단 계정 => administrator 로그인
+administrator 계정 ==> Settings ==> SSH Public Keys ==> Add Key로 추가/붙여 넣기 ==> Add 버튼
+
+* SSH Key 정상 등록 확인
+
+
+
+* 각자 계정 확인
+$ git config --global user.name "dev0NN"
+$ git config --global user.email "dev0NN@test.com"
+
+
+
+* 프로젝트 생성
+Git 서버/Gerrit 로그인		(http://hrdc501-00:8080)
+왼쪽 상단 메뉴 Projects ==> Create New Project
+Project Name: dev001	
+Rights Inherit From: All Projects		(프로젝트 권한 상속)
+Create initial emtpy commit 체크		(반드시 체크)
+Create Project 버튼		(프로젝트 최종 생성)
+
+* 서버로부터 로컬 Repo로 프로젝트 clone
+
+메뉴 Projects ==> General로 들어가서		(또는 Project List에서 선택 후)
+"ssh + Clone" URL 복사		(각자 ID, 프로젝트 명 잘 확인!!!!)
+
+Git Bash 가서
+$ cd /c
+$ mkdir Git_Local_Repository
+$ cd Git_Local_Repository
+$ git clone ssh://dev0NN@HRDC501-00:29418/dev001proj		(계정 명 dev001을 각자 맞게 변경)
+$ cd dev0NNproj
+$ git status
+$ git log
+$ gitk --all		(백그라운드로 띄우려면 gitk --all &)
+
+* Git 명령집(참고)
+
+gitk --all					History 그래프 보기 GUI (Git Bash 에서만 동작)
+git log						Commit Log 보기
+git log --all				모든 브랜치 log 보기
+git log [branch name]		브랜치의 log 보기
+git config --global user.name [user name] 	작업자 이름 설정
+git config --global user.email [user email] 	작업자 이메일 설정
+git config --global --list 			설정값(이름 및 메일등 ) 확인
+git init 			git 저장소(repo) 만들기
+git remote add [remote name] [remote addres] 	별명으로 원격지주소를 저장
+git remote rm [remote name] 			별명의 원격지를 삭제
+git remote rename [remote name] [new name] 	별명을 새로운 별명으로 변경
+git fetch [remote name] 			remoet의 모든 정보를 가져옴(모든 branch) ==> 서버에 생긴 변경 내용 확인(변경 내용 적용은 pull을 해야 함)
+git pull 		저장소에서 변경 내용 가져오기(merge까지 수행)
+git push 		commit들을 master 저장소에 저장
+git push [remote name] [localbranch name] 	local branch의 내용을 업데이트
+git push [server] tag [TAG] 			server에 tag 전송
+git push [server] --tags 			변경된 모든 tag 전송
+git push [server] [L.B]:[R:B] 		server 에 local branch 를 -Remote branch이름으로저장
+git tag [TAG NAME] 			저장소에 태그를 붙인다.
+git tag 			태그목록을 본다.
+git branch [branch name] 	저장소의 branch name으로 branch를 만든다.
+git branch branch		 목록을 본다.
+git branch -a 			현재 생성된 모든 local branch와
+git branch -v 			reomte branch 확인
+git checkout [branch name] 	다른 브랜치로 전환
+git checkout -b [branch name] 	branch 생성
+git checkout [file or folder] 	git repo 기준 마지막 commit 상태로 돌림
+git checkout [id] [file or folder] 	git repo 기준 id에 해당하는 commit 상태로 돌림
+git checkout -f 		아직 commit 되지 않은 working tree와 -index 수정사항 모두 사라짐
+git merge [branch name] 	branch의 내용을 가져와 합침
+git add [file or folder] 	git에 file 또는 folder 추가
+git add * 			git에 모든 file 또는 folder 추가
+git rm [file or folder] 	git 파일 또는 폴더 제거
+git status 			현재 git 상태 보기
+git commit -m [message] 	message를 repo에 저장
+git diff 			local과 remote의 차이점을 보여줌
+git remote 			remote서버 확인
+

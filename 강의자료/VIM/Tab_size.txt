@@ -1,0 +1,8 @@
+12345678123456781
+a	b	c
+aa	b	c
+aaa	b	c
+aaaa	b	c
+가	b	c
+가나	b	c
+가나다	b 	c

@@ -1,0 +1,79 @@
+세 개의 Repo 준비 (개발자1, 개발자2, 리뷰어)
+cp -R dev0NNproj dev0NNproj2 dev0NNreview	(각각을 <dev1>, <dev2>, <review>라고 지칭)
+
+프로젝트 Submit Type은 Merge If Necessary로 지정
+
+(1) 개발자1, C002 변경 및 리뷰 제출
+$ cd <dev1>
+$ vi repo.txt
+$ git add repo.txt
+$ git commit -a -m "C002"
+$ git push origin HEAD:refs/for/master
+
+(2) 개발자2, C003 변경 및 리뷰 제출
+$ cd <dev2>
+$ vi repo.txt		(동일한 파일 변경)
+$ git add repo.txt
+$ git commit -a -m "C003"
+$ git push origin HEAD:refs/for/master
+
+(3) 리뷰어, C003 리뷰 및 Submit
+
+(4) 리뷰어, C002 병합 시도 및 불가능		(Conflict 발생)
+
+(5) 리뷰어, 리뷰 중인 변경 git fetch
+Gerrit 화면에서 C002 리뷰 케이스에 들어가서
+오른쪽 상단의 Download 누르고 Checkout 부분의 URL을 복사
+
+$ cd <review>
+$ git fetch ssh://dev0155@HRDC504-00:29418/dev001proj refs/changes/35/135/1 && git checkout FETCH_HEAD
+$ git branch
+
+(6) 리뷰어, conflict resolution 및 merge
+
+=====> 여기서부터.... <review>에서
+    git checkout master
+    git reset --hard HEAD 하신 후에... git pull 하세요 !!!!!
+    그리고 다시 fetch부터 다시합니다!!!!!
+
+$ git fetch ssh://dev0155@HRDC504-00:29418/dev001proj refs/changes/35/135/1 && git checkout FETCH_HEAD
+$ git branch			(임시 브랜치 Detached 확인)
+
+$ git checkout -b conflict		(fetch로 받은 것을 브랜치로 생성)
+$ git branch			(생성된 브랜치 확인)
+$ git branch -u master
+$ git rebase master			(Conflict 발생)
+$ git status			(Conflict 파일 확인)
+$ vi repo.txt			(Conflict 해결)
+$ git add repo.txt			(Conflict 해결된 파일 추가)
+$ git rebase --continue master	(Rebase 계속)
+  에러 나면 git rebase --continue 라고 함
+  Window Git 문제로 master를 붙여야 하는 경우도 있음
+$ git checkout master
+$ git merge conflict		(Rebase 완료)
+$ git commit --amend		(커밋 메시지 & Chanage-Id 확인)
+
+(7) 리뷰어, Rebase & Conflict 해결된 코드 제출
+
+$ git push origin HEAD:refs/for/master
+
+(8) 리뷰어, C002 리뷰 및 병합
+
+Gerrit 웹콘솔
+
+(9) 개발자2, Local Repo 동기화
+
+$ git pull		(먼저 commit 되었으므로 pull로 OK)
+
+(10) 개발자1, Local Repo 동기화
+
+$ git fetch
+$ git pull
+
+==> 또는 (9), (10)번 과정에서 Conflict이 다시 발생하면 git log로 커밋 History 확인 후
+  git reset --hard HEAD^ 또는 git reset --hard HEAD~n(숫자)
+  로 History를 과거로 돌린 후에 git pull
+
+
+
+
