@@ -18,6 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\1_Beginner\2_control_repetition\1_repetition\4_continue_break\1_190_break_basic.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{768376EB-6906-4E3A-940E-6932D24EC0D8}</ProjectGuid>
