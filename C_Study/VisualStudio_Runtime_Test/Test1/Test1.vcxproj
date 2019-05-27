@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\1_Beginner\2_control_repetition\1_repetition\4_continue_break\1_190_break_basic.c" />
+    <ClCompile Include="..\..\2_intermediate\3_Array\3_multi_dimension\6_348_q3_2.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
