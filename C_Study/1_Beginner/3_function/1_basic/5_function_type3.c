@@ -28,6 +28,7 @@ void main(){
 	int result;
 	
 	result = my_add(); // 함수 호출(Function Call)
+	result = 3;
 	// my_add() = result; 논리적으로 성립되지 않는 잘못된 사용예
 	printf("%d\n", result);
 	*/
