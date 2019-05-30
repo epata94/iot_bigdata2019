@@ -1,0 +1,11 @@
+문제21-1] 화면 출력 예시
+알파벳 문자열을 입력하세요.
+hello
+HELLO
+APPLE
+apple
+hello~
+알파벳 문자열만 입력해 주세요.
+banana
+BANANA
+Ctrl+Z
