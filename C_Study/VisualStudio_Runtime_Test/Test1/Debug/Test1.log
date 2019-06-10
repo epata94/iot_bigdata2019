@@ -1,2 +1,3 @@
-﻿  1_495.c
+﻿  test.c
+C:\iot_bigdata2019\C_Study\VisualStudio_Runtime_Test\Test1\test.c(9,6): warning C4101:  'index' :참조되지 않은 지역 변수입니다.
   Test1.vcxproj -> C:\iot_bigdata2019\C_Study\VisualStudio_Runtime_Test\Debug\Test1.exe

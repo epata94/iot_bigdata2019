@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\4_user_defined_type\3_enum\1_495.c">
+    <ClCompile Include="test.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
