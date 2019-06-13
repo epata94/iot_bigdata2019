@@ -1,3 +1,3 @@
-﻿  test.c
-C:\iot_bigdata2019\C_Study\VisualStudio_Runtime_Test\Test1\test.c(9,6): warning C4101:  'index' :참조되지 않은 지역 변수입니다.
+﻿  win_hello_client.c
+C:\iot_bigdata2019\C_Study\9_system_programming\win_hello_client.c(51,7): warning C4013:  'gets'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
   Test1.vcxproj -> C:\iot_bigdata2019\C_Study\VisualStudio_Runtime_Test\Debug\Test1.exe

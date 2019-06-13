@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #pragma warning (disable:4996)
+#define DTEST 2
 
 void main() {
 	int s;
@@ -18,6 +19,9 @@ void main() {
 //	fgets(ptr1, sizeof(ptr1), stdin);
 	fgets(ptr1, s, stdin);
 
-	printf("%d", strlen(ptr1));
+	printf("%d\n", strlen(ptr1));
+#if DTEST==2
+	printf("DTEST2");
+#endif
 
 }
