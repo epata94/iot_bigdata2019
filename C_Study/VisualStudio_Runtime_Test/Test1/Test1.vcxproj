@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\9_system_programming\win_hello_client.c" />
+    <ClCompile Include="..\..\..\학생평가\02_리눅스_C프로그래밍\보고\홍정우\ctest\Hongjeongwoo_win_client.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

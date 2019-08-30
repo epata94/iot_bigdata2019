@@ -1,0 +1,45 @@
+[조문수]
+USER@IT-16 ~
+$ cd /
+
+USER@IT-16 /
+$ cd ~
+
+USER@IT-16 ~
+$ mkdir c_test
+
+USER@IT-16 ~
+$ cp ./linux_socket_server-template.c c_test/
+
+USER@IT-16 ~
+$ cd c_test/
+
+USER@IT-16 ~/c_test
+$ ls -alF
+합계 8
+drwxr-xr-x+ 1 USER None    0 6월  13 14:59 ./
+drwxr-xr-x+ 1 USER None    0 6월  13 14:58 ../
+-rwxr-xr-x  1 USER None 1997 6월  13 14:59 linux_socket_server-template.c*
+
+USER@IT-16 ~/c_test
+$ mv linux_socket_server-template.c linux_socket_server.c
+
+USER@IT-16 ~/c_test
+$ vi linux_socket_server.c
+
+USER@IT-16 ~/c_test
+$ gcc -o server ./linux_socket_server.c
+
+USER@IT-16 ~/c_test
+$ ./server.exe
+Socket created
+bind done
+Waiting for incoming connections...
+Connection accepted
+Hello
+It's been a long time
+bye
+Client disconnected
+
+USER@IT-16 ~/c_test
+$

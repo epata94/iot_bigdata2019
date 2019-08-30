@@ -1,0 +1,6 @@
+﻿  KimJongHo_q2.c
+C:\Iot_bigdata\C_Test\ctest\KimJongHo_q2.c(2,9): warning C4068:  알 수 없는 pragma입니다.
+C:\Iot_bigdata\C_Test\ctest\KimJongHo_q2.c(20,1): error C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.
+C:\Iot_bigdata\C_Test\ctest\KimJongHo_q2.c(21,1): error C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): message :  'fopen' 선언을 참조하십시오.

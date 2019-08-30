@@ -1,0 +1,43 @@
+[±èÇý°æ]
+USER@USER4-PC ~
+$ pwd
+/cygdrive/c/SPB_Data
+
+USER@USER4-PC ~
+$ cd ~
+
+USER@USER4-PC ~
+$ mkdir c_test
+
+USER@USER4-PC ~
+$ cp ./linux_socket_server_template.c c_test
+
+USER@USER4-PC ~
+$ cd c_test/
+
+USER@USER4-PC ~/c_test
+$ ls -alF
+ÇÕ°è 16
+drwxrwxr-x+ 1 USER           None    0 6¿ù  13 14:39 ./
+drwxrwx---+ 1 Administrators None    0 6¿ù  13 14:39 ../
+-rwxrwx---+ 1 USER           None 1997 6¿ù  13 14:39 linux_socket_server_template.c*
+
+USER@USER4-PC ~/c_test
+$ mv linux_socket_server_template.c linux_socket_server.c
+
+USER@USER4-PC ~/c_test
+$ vi linux_socket_server.c
+
+USER@USER4-PC ~/c_test
+$ gcc -o server ./linux_socket_server.c
+
+USER@USER4-PC ~/c_test
+$ ./server
+Socket created
+bind done
+Waiting for incoming connections...
+Connection accepted
+Hello
+It's been a long time
+bye
+Client disconnected

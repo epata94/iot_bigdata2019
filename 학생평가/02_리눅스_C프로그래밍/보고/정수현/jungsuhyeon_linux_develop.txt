@@ -1,0 +1,51 @@
+[정수현]
+Administrator@MSDN-SPECIAL ~
+$ pwd
+/home/Administrator
+
+Administrator@MSDN-SPECIAL ~
+$ cd ~
+
+Administrator@MSDN-SPECIAL ~
+$ ls
+linux_socket_server-template.c
+
+Administrator@MSDN-SPECIAL ~
+$ mkdir ./c_test
+
+Administrator@MSDN-SPECIAL ~
+$ ls
+c_test  linux_socket_server-template.c
+
+Administrator@MSDN-SPECIAL ~
+$ cp ./linux_socket_server-template.c c_test/
+
+Administrator@MSDN-SPECIAL ~
+$ ls
+c_test  linux_socket_server-template.c
+
+Administrator@MSDN-SPECIAL ~
+$ cd ./c_test/
+
+Administrator@MSDN-SPECIAL ~/c_test
+$ ls -alF
+합계 12
+drwxr-xr-x+ 1 Administrator None    0 6월  13 14:54 ./
+drwxr-xr-x+ 1 Administrator None    0 6월  13 14:53 ../
+-rwxr-xr-x  1 Administrator None 1997 6월  13 14:54 linux_socket_server-template.c*
+
+Administrator@MSDN-SPECIAL ~/c_test
+$ mv ./linux_socket_server-template.c linux_socket_server.c
+
+Administrator@MSDN-SPECIAL ~/c_test
+$ ls
+linux_socket_server.c
+
+Administrator@MSDN-SPECIAL ~/c_test
+$ vi linux_socket_server.c
+
+Administrator@MSDN-SPECIAL ~/c_test
+$ gcc -o linux_server ./linux_socket_server.c
+
+Administrator@MSDN-SPECIAL ~/c_test
+$ ./linux_server.exe

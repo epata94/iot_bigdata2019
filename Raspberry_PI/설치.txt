@@ -1,0 +1,9 @@
+* 해상도
+nano  /boot/config.txt
+disable_overscan=1 <= 활성화
+
+* 사운드 카드
+// 3.5mm jack
+amixer cset numid=3 1
+// HDMI
+amixer cset numid=3 /
